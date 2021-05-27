@@ -2,22 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <%- include('./partials/head'); %>
+  <title>Members Only - Sign Up</title>
 </head>
-<body>
-  <h1>Sign Up</h1>
-  <form action="" method="POST">
-    <label for="first_name">First Name</label>
-    <input name="first_name" placeholder="First Name" type="text" required/>
-    <label for="family_name">Family Name</label>
-    <input name="family_name" placeholder="Family Name" type="text" />
-    <label for="email">Email Address</label>
-    <input name="email" placeholder="Email" type="text" />
-    <label for="username">Username</label>
-    <input name="username" placeholder="Username" type="text" />
-    <label for="password">Password</label>
-    <input name="password" type="password" />
-    <button>Sign Up</button>
-  </form>
+<body class="container">
+
+  <header>
+    <%- include('./partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>Sign Up</h1>
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input name="first_name" class="form-control" placeholder="First Name" type="text" required/>
+        </div>
+        <div class="form-group">
+          <label for="family_name">Family Name</label>
+          <input name="family_name" class="form-control" placeholder="Family Name" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input name="email" class="form-control" placeholder="Email" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input name="username" class="form-control" placeholder="Username" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input name="password" class="form-control" type="password" />
+        </div>
+        <div class="form-group">
+          <label for="password">Confirm Password</label>
+          <input name="password" class="form-control" type="password" />
+        </div>
+        <button>Sign Up</button>
+
+        <% if(typeof errors != 'undefined'){ %>
+            <ul>
+          <% for(let i=0; i < errors.length; i++) {%>
+                <li><%=errors[i].msg %></li>
+            <%}%>
+            </ul>
+        <%}%>
+        <p><%=msg %></p>
+      </form>
+    </div>
+  </main>
 </body>
 </html>

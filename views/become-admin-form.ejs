@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%- include('./partials/head'); %>
+  <title>Members Only - Become Admin</title>
+</head>
+<body class="container">
+
+  <header>
+    <%- include('./partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>Become Admin</h1>
+      <% if (!currentUser.member_status) {%>
+        <form action="" method="POST">
+          <div class="form-group">
+            <label for="admin_password">Admin Password</label>
+            <input name="admin_password" class="form-control" placeholder="Admin Password" type="password" required/>
+          </div>
+          <button>Submit</button>
+
+          <% if(typeof errors != 'undefined'){ %>
+              <ul>
+            <% for(let i=0; i < errors.length; i++) {%>
+                  <li><%=errors[i].msg %></li>
+              <%}%>
+              </ul>
+          <%}%>
+          <p><%=msg %></p>
+        </form>
+      <% } else { %>
+        <p>You are already an admin</p>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

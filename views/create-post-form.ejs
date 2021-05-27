@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%- include('./partials/head'); %>
+  <title>Members Only - Create Post</title>
+</head>
+<body class="container">
+
+  <header>
+    <%- include('./partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>Create Post</h1>
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="post_title">Title</label>
+          <input name="post_title" class="form-control" placeholder="Title" type="text" required/>
+        </div>
+        <div class="form-group">
+          <label for="post_content">Content</label>
+          <input name="post_content" class="form-control" placeholder="Content" type="text" />
+        </div>
+        <button>Post</button>
+
+        <% if(typeof errors != 'undefined'){ %>
+            <ul>
+          <% for(let i=0; i < errors.length; i++) {%>
+                <li><%=errors[i].msg %></li>
+            <%}%>
+            </ul>
+        <%}%>
+        <p><%=msg %></p>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
